@@ -1,0 +1,24 @@
+name: Cotacao Diaria Nespro
+on:
+  schedule:
+    # O GitHub usa o horário UTC. 12:00 UTC é 09:00 em Brasília/RS.
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Isto serve para poderes testar manualmente agora
+
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copiar ficheiros
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar bibliotecas
+        run: pip install requests beautifulsoup4
+
+      - name: Executar o robô
+        run: python main.py
