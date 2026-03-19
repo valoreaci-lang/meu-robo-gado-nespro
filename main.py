@@ -1,32 +1,21 @@
 import requests
-from bs4 import BeautifulSoup
 
-# --- COLOQUE SEUS DADOS AQUI ---
-TOKEN = "8588052322:AAEraKnzeDWUvgGKSzYgX3SwEpYsf1Kteqo"
-CHAT_ID = 7974959962
+# 1. Cole aqui o Token que você copiou do BotFather (aquela barra cinza)
+TOKEN = "8588052322:AAEraKnzeDWUvgGKSzYgX3SwEpYsf1Kteqo" 
 
-def buscar_nespro():
-    url = "https://www.ufrgs.br/nespro/"
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    try:
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        tabela = soup.find('table')
-        if not tabela: return "⚠️ Tabela não encontrada no site."
-        
-        linhas = tabela.find_all('tr')
-        msg = "🐂 *COTAÇÃO NESPRO*\n\n"
-        for linha in linhas[:6]:
-            colunas = [c.text.strip() for c in linha.find_all('td')]
-            if len(colunas) >= 2:
-                msg += f"• *{colunas[0]}:* {colunas[1]}\n"
-        return msg
-    except Exception as e:
-        return f"❌ Erro: {e}"
+# 2. Cole aqui o número que o @userinfobot te deu (apenas os números)
+CHAT_ID = 7974959962 
 
-def enviar_telegram(texto):
+def enviar_teste():
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-    requests.post(url, data={"chat_id": CHAT_ID, "text": texto, "parse_mode": "Markdown"})
+    payload = {
+        "chat_id": CHAT_ID, 
+        "text": "🐂 *TESTE DO ROBÔ NESPRO*\nSe você recebeu isso, o robô está funcionando!",
+        "parse_mode": "Markdown"
+    }
+    
+    response = requests.post(url, data=payload)
+    print(f"Resposta do Telegram: {response.text}")
 
 if __name__ == "__main__":
-    enviar_telegram(buscar_nespro())
+    enviar_teste()
