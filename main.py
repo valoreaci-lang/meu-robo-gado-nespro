@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # --- COLOQUE SEUS DADOS AQUI ---
-TOKEN = "8588052322"
-CHAT_ID = "7974959962"
+TOKEN = 8588052322:AAEraKnzeDWUvgGKSzYgX3SwEpYsf1Kteqo
+CHAT_ID = 7974959962
 
 def buscar_nespro():
     url = "https://www.ufrgs.br/nespro/"
