@@ -1,21 +1,21 @@
 import requests
 
-# 1. Cole aqui o Token que você copiou do BotFather (aquela barra cinza)
-TOKEN = "8588052322:AAEraKnzeDWUvgGKSzYgX3SwEpYsf1Kteqo" 
+# 1. COLOQUE O TOKEN QUE VOCÊ COPIOU DO BOTFATHER AQUI
+TOKEN = "8588052322:AAEraKnzeDWUvgGKSzYgX3SwEpYsf1Kteqo"
 
-# 2. Cole aqui o número que o @userinfobot te deu (apenas os números)
-CHAT_ID = 7974959962 
+# 2. COLOQUE O SEU ID DO @userinfobot AQUI
+CHAT_ID = "7974959962"
 
 def enviar_teste():
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     payload = {
         "chat_id": CHAT_ID, 
-        "text": "🐂 *TESTE DO ROBÔ NESPRO*\nSe você recebeu isso, o robô está funcionando!",
-        "parse_mode": "Markdown"
+        "text": "🐂 ✅ CONSEGUIMOS! O robô do gado está ativo!"
     }
     
-    response = requests.post(url, data=payload)
-    print(f"Resposta do Telegram: {response.text}")
+    # Isso vai forçar o erro a aparecer na tela da foto
+    r = requests.post(url, data=payload)
+    print(f"RESPOSTA_DO_TELEGRAM: {r.text}")
 
 if __name__ == "__main__":
     enviar_teste()
