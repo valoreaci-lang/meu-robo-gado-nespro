@@ -2,7 +2,7 @@ name: Cotacao Diaria Nespro
 on:
   schedule:
     # O GitHub usa o horário UTC. 12:00 UTC é 07:00 em Brasília/RS.
-    - cron: '0 12 * * *'
+    - cron: '0 10 * * *'
   workflow_dispatch: # Isto serve para poderes testar manualmente agora
 
 jobs:
